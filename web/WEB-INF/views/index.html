@@ -1,0 +1,92 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>Комната 175</title>
+	<link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css">
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" th:src="@{/js/index_script.js}" defer></script>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="popup" >
+		<div class="content">
+			<h2>Вы уверены, что хотите удалить этот документ?</h2>
+			<form th:action="@{/delete}" method="POST">
+				<input type="text" name="id" style="display: none">
+				<table width="100%">
+					<td><button type="submit" class="button green" style="height:50px;width:100px">Да</button></td>
+					<td><button type="button" class="button red" onclick="popupPassive();" style="height:50px;width:100px">Нет</button></td>
+				</table>
+			</form>
+		</div>
+		<a class="close" onclick="popupPassive();" ><img th:src="@{/images/closewindow.png}"></a>
+	</div>
+	<div id="text_popup" >
+		<p></p>
+		<a class="close" onclick="textPassive();" ><img th:src="@{/images/closewindow.png}"/></a>
+	</div>
+	<div class="heading">
+<!--		<a><img th:src="@{/images/static_house.png}"></a>-->
+<!--		<a class="gif" href="#"><img src="house.gif" alt="" /></a>-->
+		<a href="#" class="gif" onclick="cancelMainPage()"></a>
+		<h2>Распознавание документов</h2>
+		<form action="/upload" th:action="@{/upload}" method="POST" enctype="multipart/form-data" id="upload">
+			<label class="input-file">
+				<input type="file" name="file" accept=".pdf" onchange="uploadDocument(this)">
+				<input type="text" name="name" style="display: none">
+				<input type="text" name="author" style="display: none">
+				<span>Загрузить файл</span>
+			</label>
+		</form>
+		<div class="search-box" id="search-box">
+			<input type="number" min="1"  class="search-txt" onchange="search_id(this)" placeholder=" Введите индекс документа" autocomplete="off"/>
+			<a class="search-btn" href="#">
+				<i class="fa fa-search" aria-hidden="true" ></i>
+			</a>
+			<div id="search_advice_wrapper"></div>
+		</div>
+	</div>
+
+	<table class="table_sort" th:if="${not #lists.isEmpty(documents)}" id="mainTable">
+		<thead>
+			<tr id="thead">
+				<td style="width:5%"><h3>Индекс документа</h3></td>
+				<td style="width:10%"><h3>Название документа</h3></td>
+				<td style="width:5%"><h3>Дата загрузки</h3></td>
+				<td style="width:10%"><h3>Автор</h3></td>
+				<td style="width:10%"><h3>Ключевые слова</h3></td>
+				<td style="width:30%"><h3>Текст</h3></td>
+				<th style="width:30%;border-collapse: collapse" colspan="3"><h3>Действия</h3></th>
+			</tr>
+		</thead>
+
+		<tr class="table_item" th:each="document:${documents}" th:id="${document.documentid}" >
+			<td><p th:utext="${document.documentid}"></p></td>
+			<td><p th:utext="${document.documentname}"></p></td>
+			<td><p th:utext="${document.uploaddate}"></p></td>
+			<td><p th:utext="${document.author}"></p></td>
+			<td><p th:utext="${document.keywords}"></p></td>
+			<td><a href="#"  th:text="${document.documenttext}" onclick = "textActive(text)"></a></td>
+			<td>
+				<form action="/download" th:action="@{/download}" method="POST">
+					<input type="text" name="id" th:value="${document.documentid}" style="display: none;">
+					<button type="submit" class="button green">Скачать</button>
+				</form>
+			</td>
+			<td>
+				<button class="button red" onclick ="popupActive(this);">Удалить</button>
+			</td>
+			<td><button class="button yellow" onclick="updateDocument(this)">Изменить</button></td>
+		</tr>
+	</table>
+	<div>
+		<h2 style="text-align: center; font-size: 40px;"  th:if="${#lists.isEmpty(documents)}">В таблице нет записей</h2>
+	</div>
+</body>
+</html>

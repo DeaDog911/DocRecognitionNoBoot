@@ -1,0 +1,52 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>Комната 175</title>
+    <link rel="stylesheet"  th:href="@{/css/styles.css}"  type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+    <script type="text/javascript" th:src="@{/js/update_script.js}" defer></script>
+</head>
+<body>
+<div class="heading">
+    <h2>Изменение документа</h2>
+</div>
+<table>
+
+    <tr>
+        <td style="width:5%"><h3>Индекс документа</h3></td>
+        <td style="width:10%"><h3>Название документа</h3></td>
+        <td style="width:5%"><h3>Дата загрузки</h3></td>
+        <td style="width:10%"><h3>Автор</h3></td>
+        <td style="width:30%"><h3>Текст</h3></td>
+        <th style="width:5%"><h3>Файл</h3></th>
+    </tr>
+    <tr>
+        <td><p th:text="${document.documentid}"></p></td>
+        <form method="POST" th:action="@{/update}" enctype="multipart/form-data" id="update">
+            <input type="text" name="id" th:value="${document.documentid}" style="display: none"/>
+            <td>
+                <input class="edit_data" type="text" name="name" th:placeholder="${document.documentname}"
+                       onchange="sendFilename(this)" autocomplete="off">
+            </td>
+            <td><p th:text="${document.uploaddate}"></p></td>
+            <td>
+                <input class="edit_data" type="text" name="author" th:placeholder="${document.author}"
+                       autocomplete="off" onchange="sendAuthor(this)">
+            </td>
+            <td><p th:text="${document.documenttext}"></p></td>
+            <td><label class="input-file">
+                <input type="file" name="file" id="fileId" accept=".pdf" onchange="uploadDocument()" >
+                <span>Изменить</span>
+            </label>
+            </td>
+        </form>
+    </tr>
+</table>
+<table2 id="page2">
+    <button class="button green" onclick="editData()">Сохранить</button>
+    <button class="button red" onclick="cancelUpdate()">Отмена</button>
+</table2>
+</body>
+</html>
