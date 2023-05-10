@@ -15,19 +15,15 @@ import java.util.Optional;
 @Service
 @Transactional
 public class DocumentService implements IDocumentService{
-
-//    private final DocumentRepository documentRepository;
-//    public DocumentService(DocumentRepository documentRepository) {
-//        this.documentRepository = documentRepository;
-//    }
-    private DocumentRepository documentRepository;
+    private final DocumentRepository documentRepository;
     @Autowired
     public DocumentService(DocumentRepository documentRepository) {
         this.documentRepository = documentRepository;
     }
+
     @Override
     public List<DocumentEntity> findAll() {
-        return (List<DocumentEntity>) documentRepository.findAll();
+        return documentRepository.findAllByOrderByDocumentidAsc();
     }
 
     @Override

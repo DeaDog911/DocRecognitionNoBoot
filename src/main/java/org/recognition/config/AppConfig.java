@@ -1,16 +1,10 @@
 package org.recognition.config;
 
-import jakarta.persistence.EntityManagerFactory;
-import org.recognition.repositories.DocumentRepository;
-import org.recognition.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -49,16 +43,6 @@ public class AppConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
-//    @Bean()
-//    public DocumentRepository getDocumentRepository() {
-//        return new DocumentRepository();
-//    }
-//
-//    @Bean()
-//    public DocumentService getDocumentService() {
-//        return new DocumentService(getDocumentRepository());
-//    }
-
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
@@ -69,28 +53,14 @@ public class AppConfig implements WebMvcConfigurer {
         registry.viewResolver(resolver);
     }
 
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("/");
     }
-//    @Bean(name = "filterMultipartResolver")
-//    public CommonsMultipartResolver multiPartResolver(){
-//        CommonsMultipartResolver resolver = new
-//                CommonsMultipartResolver();
-//        return resolver;
-//    }
-//    @Bean(name = "multipartResolver")
-//    public CommonsMultipartResolver multipartResolver() {
-//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-//        multipartResolver.setMaxUploadSize(100000);
-//        return multipartResolver;
-//    }
 
     @Bean
     public StandardServletMultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
     }
-
 }
 
