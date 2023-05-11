@@ -8,6 +8,15 @@ function popupPassive(){
     const popup = document.getElementById('popup');
     popup.classList.remove('active');
 }
+
+function checkboxActive(el){
+    const popup = document.getElementById('check_box');
+    popup.classList.add('active');
+}
+function checkboxPassive(){
+    const popup = document.getElementById('check_box');
+    popup.classList.remove('active');
+}
 function uploadDocument(el) {
     let ext = el.value.match(/\.([^\.]+)$/)[1];
     if (ext=='pdf'){
@@ -17,9 +26,14 @@ function uploadDocument(el) {
         if (name !== "" && name !== null && author !== "" && author != null) {
             uploadForm.elements.name.value = name;
             uploadForm.elements.author.value = author;
+            if(document.getElementById('fid-1').checked) {
+                uploadForm.elements.language.value = 'rus';
+            }else if(document.getElementById('fid-2').checked) {
+                uploadForm.elements.language.value = 'eng';
+            }
             uploadForm.submit();
         }else {
-            alert("Имя файла или имя автора не может быть путой строкой");
+            alert("Имя файла или имя автора не может быть пуcтой строкой");
             window.location.reload();
         }
     }

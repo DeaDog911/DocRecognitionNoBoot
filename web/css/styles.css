@@ -47,11 +47,11 @@ a:visited {
 }
 
 .heading h2 {
-	margin-left:5%;
 	font-size: 30px;
 	font-weight: 600;
 	padding: 20px 0;
 	margin-top: 0;
+	margin-right:10% ;
 	background-color: #ffffff;
 	border-bottom: 0px #dddddd;
 	margin-bottom: 0px;
@@ -317,7 +317,6 @@ table tbody tr:nth-child(even){
 	padding: 10px 20px;
 	box-sizing: border-box;
 	border: none;
-	margin: 0;
 	transition: background-color 0.2s;
 	font-size: 18px;
 }
@@ -348,7 +347,7 @@ table tbody tr:nth-child(even){
 }
 
 .heading .input-file span{
-	margin-left: 200px;
+	margin-left: 20px;
 	width: 200px;
 	height:50px;
 }
@@ -438,5 +437,43 @@ table tbody tr:nth-child(even){
 	margin-left:78%;
 }
 
+.form_toggle {
+	display: inline-block;
+	overflow: hidden;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.form_toggle-item {
+	float: left;
+	display: inline-block;
+}
+.form_toggle-item input[type=radio] {
+	display: none;
+}
+.form_toggle-item label {
+	display: inline-block;
+	/*padding: 0px 15px;*/
+	line-height: 30px;
+	border: 0px solid #999;
+	border-right: none;
+	cursor: pointer;
+	user-select: none;
+}
 
+.form_toggle .item-1 label {
+	border-radius: 0px 0px 0px 0px;
+}
+.form_toggle .item-2 label {
+	border-radius:  0px 0px 0px 0px;
+	border-right: 0px solid #999;
+}
+
+/* Checked */
+.form_toggle .item-1 input[type=radio]:checked + label {
+	background: #86c6fa;
+}
+.form_toggle .item-2 input[type=radio]:checked + label {
+
+	background:  #86c6fa;
+}
 

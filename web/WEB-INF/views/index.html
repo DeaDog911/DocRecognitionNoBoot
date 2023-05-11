@@ -36,11 +36,22 @@
 <!--		<a class="gif" href="#"><img src="house.gif" alt="" /></a>-->
 		<a href="#" class="gif" onclick="cancelMainPage()"></a>
 		<h2>Распознавание документов</h2>
+		<div class="form_toggle">
+			<div class="form_toggle-item item-1">
+				<input id="fid-1" type="radio" name="radio" value="off" checked>
+				<label for="fid-1">RU</label>
+			</div>
+			<div class="form_toggle-item item-2">
+				<input id="fid-2" type="radio" name="radio" value="on">
+				<label for="fid-2">EN</label>
+			</div>
+		</div>
 		<form action="/upload" th:action="@{/upload}" method="POST" enctype="multipart/form-data" id="upload">
 			<label class="input-file">
 				<input type="file" name="file" accept=".pdf" onchange="uploadDocument(this)">
 				<input type="text" name="name" style="display: none">
 				<input type="text" name="author" style="display: none">
+				<input type="text" name="language" style="display: none">
 				<span>Загрузить файл</span>
 			</label>
 		</form>
@@ -58,7 +69,7 @@
 			<tr id="thead">
 				<td style="width:5%"><h3>Индекс документа</h3></td>
 				<td style="width:10%"><h3>Название документа</h3></td>
-				<td style="width:5%"><h3>Дата загрузки</h3></td>
+				<td style="width:5%"><h3>Дата обновления</h3></td>
 				<td style="width:10%"><h3>Автор</h3></td>
 				<td style="width:10%"><h3>Ключевые слова</h3></td>
 				<td style="width:30%"><h3>Текст</h3></td>
@@ -69,7 +80,7 @@
 		<tr class="table_item" th:each="document:${documents}" th:id="${document.documentid}" >
 			<td><p th:utext="${document.documentid}"></p></td>
 			<td><p th:utext="${document.documentname}"></p></td>
-			<td><p th:utext="${document.uploaddate}"></p></td>
+			<td><p th:utext="${document.updatedate}"></p></td>
 			<td><p th:utext="${document.author}"></p></td>
 			<td><p th:utext="${document.keywords}"></p></td>
 			<td><a href="#"  th:text="${document.documenttext}" onclick = "textActive(text)"></a></td>
