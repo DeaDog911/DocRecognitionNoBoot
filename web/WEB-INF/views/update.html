@@ -18,9 +18,10 @@
         <td style="width:5%"><h3>Индекс документа</h3></td>
         <td style="width:10%"><h3>Название документа</h3></td>
         <td style="width:5%"><h3>Дата загрузки</h3></td>
-        <td style="width:10%"><h3>Автор</h3></td>
+        <td style="width:20%"><h3>Автор</h3></td>
         <td style="width:30%"><h3>Текст</h3></td>
-        <th style="width:5%"><h3>Файл</h3></th>
+        <th style="width:10%"><h3>Файл</h3></th>
+        <th style="width:20%"><h3>Язык файла</h3></th>
     </tr>
     <tr>
         <td><p th:text="${document.documentid}"></p></td>
@@ -35,12 +36,25 @@
                 <input class="edit_data" type="text" name="author" th:placeholder="${document.author}"
                        autocomplete="off" onchange="sendAuthor(this)">
             </td>
-            <td><p th:text="${document.documenttext}"></p></td>
+            <td><span id="short_text"><p th:text="${document.documenttext}"></p></span></td>
             <td><label class="input-file">
                 <input type="file" name="file" id="fileId" accept=".pdf" onchange="uploadDocument()" >
                 <span>Изменить</span>
             </label>
             </td>
+            <td>
+                <div class="form_toggle">
+                    <div class="form_toggle-item item-1">
+                        <input id="fid-1" type="radio" name="radio" value="off">
+                        <label for="fid-1">RU</label>
+                    </div>
+                    <div class="form_toggle-item item-2">
+                        <input id="fid-2" type="radio" name="radio" value="on">
+                        <label for="fid-2">EN</label>
+                    </div>
+                </div>
+            </td>
+            <input type="text" name="language" style="display: none">
         </form>
     </tr>
 </table>

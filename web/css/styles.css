@@ -10,9 +10,9 @@ input[type="text"] {
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 }
-	
+
 input[type='number'],
 input[type="number"]:hover,
 input[type="number"]:focus {
@@ -26,6 +26,8 @@ a {
 	text-decoration: none;
 	padding: 2px 1px 0;
 }
+
+
 
 a:link {
 	color: #000000;
@@ -47,20 +49,15 @@ a:visited {
 }
 
 .heading h2 {
-	margin-left:5%;
 	font-size: 30px;
 	font-weight: 600;
 	padding: 20px 0;
 	margin-top: 0;
+	margin-right:10% ;
 	background-color: #ffffff;
 	border-bottom: 0px #dddddd;
 	margin-bottom: 0px;
 }
-
-.heading .content{
-	background-color: #ffffff;
-}
-
 
 body {
 	background-color:#d9ead3;
@@ -112,7 +109,14 @@ table tbody tr:nth-child(even){
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	max-width: 40ch;
+	max-width: 30ch;
+}
+
+#mainTable a{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 10ch;
 }
 
 
@@ -317,7 +321,6 @@ table tbody tr:nth-child(even){
 	padding: 10px 20px;
 	box-sizing: border-box;
 	border: none;
-	margin: 0;
 	transition: background-color 0.2s;
 	font-size: 18px;
 }
@@ -337,7 +340,7 @@ table tbody tr:nth-child(even){
 
 .input-file:hover span {
 	background-color: #157acc;
-	
+
 }
 .input-file:active span {
 	background-color: #157acc;
@@ -348,7 +351,7 @@ table tbody tr:nth-child(even){
 }
 
 .heading .input-file span{
-	margin-left: 200px;
+	margin-left: 20px;
 	width: 200px;
 	height:50px;
 }
@@ -360,7 +363,7 @@ table tbody tr:nth-child(even){
 	text-decoration: none;
 	text-align: center;
 	margin-top:100px;
- }
+}
 
 #nav a.active {
 	background-color: #ffffff;
@@ -388,7 +391,7 @@ table tbody tr:nth-child(even){
 .search-box:hover > .search-txt {
 	width: 340px;
 	color:#000000;
-	padding: 0 0px;
+	padding-left:10px;
 }
 .search-box:hover > .search-btn {
 	background: rgb(255, 255, 255);
@@ -427,10 +430,52 @@ table tbody tr:nth-child(even){
 	font-weight: bold;
 }
 
+/*радиобатон*/
+
+.form_toggle {
+	display: inline-block;
+	overflow: hidden;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.form_toggle-item {
+	float: left;
+	display: inline-block;
+}
+.form_toggle-item input[type=radio] {
+	display: none;
+}
+.form_toggle-item label {
+	display: inline-block;
+	/*padding: 0px 15px;*/
+	line-height: 30px;
+	border: 2px solid #999;
+	border-right: none;
+	cursor: pointer;
+	user-select: none;
+}
+
+.form_toggle .item-1 label {
+	border-radius: 0px 0px 0px 0px;
+}
+.form_toggle .item-2 label {
+	border-radius:  0px 0px 0px 0px;
+	border-right: 2px solid #999;
+}
+
+.form_toggle .item-1 input[type=radio]:checked + label {
+	background: #86c6fa;
+}
+.form_toggle .item-2 input[type=radio]:checked + label {
+
+	background:  #86c6fa;
+}
+
 /*страница 2*/
 
 .edit_data:hover{
 	color:#000000;
+	padding-left:10px;
 }
 
 #page2 .button.green{
@@ -438,5 +483,10 @@ table tbody tr:nth-child(even){
 	margin-left:78%;
 }
 
-
+#short_text p{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 30ch;
+}
 
