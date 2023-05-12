@@ -35,7 +35,7 @@
 <!--		<a><img th:src="@{/images/static_house.png}"></a>-->
 <!--		<a class="gif" href="#"><img src="house.gif" alt="" /></a>-->
 		<a href="#" class="gif" onclick="cancelMainPage()"></a>
-		<h2>Распознавание документов</h2>
+		<h2>TextScanify</h2>
 		<div class="form_toggle">
 			<div class="form_toggle-item item-1">
 				<input id="fid-1" type="radio" name="radio" value="off" checked>
@@ -62,6 +62,14 @@
 			</a>
 			<div id="search_advice_wrapper"></div>
 		</div>
+		<div class="dropdown">
+<!--			логин пользователя-->
+		<button class="dropbtn"> Аккаунт</button>
+		<div class="dropdown-content">
+			<a href="#">Сбросить пароль</a>
+			<a href="#">Выйти</a>
+		</div>
+	</div>
 	</div>
 
 	<table class="table_sort" th:if="${not #lists.isEmpty(documents)}" id="mainTable">
@@ -71,8 +79,8 @@
 				<td style="width:10%"><h3>Название документа</h3></td>
 				<td style="width:5%"><h3>Дата обновления</h3></td>
 				<td style="width:10%"><h3>Автор</h3></td>
-				<td style="width:10%"><h3>Ключевые слова</h3></td>
-				<td style="width:30%"><h3>Текст</h3></td>
+				<td style="width:25%"><h3>Ключевые слова</h3></td>
+				<td style="width:15%"><h3>Текст</h3></td>
 				<th style="width:30%;border-collapse: collapse" colspan="3"><h3>Действия</h3></th>
 			</tr>
 		</thead>
