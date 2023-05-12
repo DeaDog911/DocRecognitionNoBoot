@@ -14,26 +14,26 @@ public class DocumentEntity {
     @Column(name = "documentid")
     private int documentid;
     @Basic
-    @Column(name = "documentname")
-    private String documentname;
-    @Basic
     @Column(name = "author")
     private String author;
-    @Basic
-    @Column(name = "uploaddate")
-    private Date uploaddate;
-    @Basic
-    @Column(name = "updatedate")
-    private Date updatedate;
     @Basic
     @Column(name = "binarytext")
     private byte[] binarytext;
     @Basic
-    @Column(name = "documenttext")
+    @Column(name = "documentname")
+    private String documentname;
+    @Basic
+    @Column(name = "documenttext", columnDefinition = "TEXT")
     private String documenttext;
     @Basic
     @Column(name = "keywords")
     private String keywords;
+    @Basic
+    @Column(name = "updatedate")
+    private Date updatedate;
+    @Basic
+    @Column(name = "uploaddate")
+    private Date uploaddate;
 
     public int getDocumentid() {
         return documentid;
@@ -41,14 +41,6 @@ public class DocumentEntity {
 
     public void setDocumentid(int documentid) {
         this.documentid = documentid;
-    }
-
-    public String getDocumentname() {
-        return documentname;
-    }
-
-    public void setDocumentname(String documentname) {
-        this.documentname = documentname;
     }
 
     public String getAuthor() {
@@ -59,28 +51,20 @@ public class DocumentEntity {
         this.author = author;
     }
 
-    public Date getUploaddate() {
-        return uploaddate;
-    }
-
-    public void setUploaddate(Date uploaddate) {
-        this.uploaddate = uploaddate;
-    }
-
-    public Date getUpdatedate() {
-        return updatedate;
-    }
-
-    public void setUpdatedate(Date updatedate) {
-        this.updatedate = updatedate;
-    }
-
     public byte[] getBinarytext() {
         return binarytext;
     }
 
     public void setBinarytext(byte[] binarytext) {
         this.binarytext = binarytext;
+    }
+
+    public String getDocumentname() {
+        return documentname;
+    }
+
+    public void setDocumentname(String documentname) {
+        this.documentname = documentname;
     }
 
     public String getDocumenttext() {
@@ -99,17 +83,33 @@ public class DocumentEntity {
         this.keywords = keywords;
     }
 
+    public Date getUpdatedate() {
+        return updatedate;
+    }
+
+    public void setUpdatedate(Date updatedate) {
+        this.updatedate = updatedate;
+    }
+
+    public Date getUploaddate() {
+        return uploaddate;
+    }
+
+    public void setUploaddate(Date uploaddate) {
+        this.uploaddate = uploaddate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DocumentEntity entity = (DocumentEntity) o;
-        return documentid == entity.documentid && Objects.equals(documentname, entity.documentname) && Objects.equals(author, entity.author) && Objects.equals(uploaddate, entity.uploaddate) && Objects.equals(updatedate, entity.updatedate) && Arrays.equals(binarytext, entity.binarytext) && Objects.equals(documenttext, entity.documenttext) && Objects.equals(keywords, entity.keywords);
+        return documentid == entity.documentid && Objects.equals(author, entity.author) && Arrays.equals(binarytext, entity.binarytext) && Objects.equals(documentname, entity.documentname) && Objects.equals(documenttext, entity.documenttext) && Objects.equals(keywords, entity.keywords) && Objects.equals(updatedate, entity.updatedate) && Objects.equals(uploaddate, entity.uploaddate);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(documentid, documentname, author, uploaddate, updatedate, documenttext, keywords);
+        int result = Objects.hash(documentid, author, documentname, documenttext, keywords, updatedate, uploaddate);
         result = 31 * result + Arrays.hashCode(binarytext);
         return result;
     }

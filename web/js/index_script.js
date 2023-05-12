@@ -53,11 +53,12 @@ function textActive(text){
     text_popup.classList.add('active');
 }
 
-$('a').each(function() {
-    if ($(this).text().length > 40) {
-        $(this).text( $(this).text().substring(0, 40) + '…');
-    }
-});
+// $('a').each(function() {
+//     if ($(this).text().length > 40) {
+//         $(this).text( $(this).text().substring(0, 40) + '…');
+//     }
+// });
+
 function textPassive(){
     const text_popup = document.getElementById('text_popup');
     text_popup.classList.remove('active');

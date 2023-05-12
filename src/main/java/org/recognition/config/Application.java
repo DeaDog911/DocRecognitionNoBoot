@@ -11,6 +11,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class Application implements WebApplicationInitializer {
     private String TMP_FOLDER = "/WEB-INF/tmp";
     private int MAX_UPLOAD_SIZE = 5 * 1024 * 1024;
+    public static String TESSDATA_PATH = "C:\\Users\\deado\\IdeaProjects\\DocRecognitionNoBoot\\src\\main\\resources\\tessdata";
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();

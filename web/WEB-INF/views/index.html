@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<title>Комната 175</title>
+	<title>175 Комната</title>
 	<link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
 	<!--[if lt IE 9]>
@@ -83,7 +83,7 @@
 			<td><p th:utext="${document.updatedate}"></p></td>
 			<td><p th:utext="${document.author}"></p></td>
 			<td><p th:utext="${document.keywords}"></p></td>
-			<td><a href="#"  th:text="${document.documenttext}" onclick = "textActive(text)"></a></td>
+			<td><a href="#" onclick = "textActive(text)"><p th:text="${document.documenttext}"  style="white-space: nowrap;"></p></a></td>
 			<td>
 				<form action="/download" th:action="@{/download}" method="POST">
 					<input type="text" name="id" th:value="${document.documentid}" style="display: none;">

@@ -2,7 +2,6 @@ package org.recognition.controller;
 
 import net.sourceforge.tess4j.TesseractException;
 import org.recognition.entity.DocumentEntity;
-import org.apache.commons.io.FilenameUtils;
 import org.recognition.utils.Recognition;
 import org.recognition.utils.Validation;
 import org.springframework.core.io.ByteArrayResource;
@@ -56,10 +55,13 @@ public class IndexController {
         String keywords = "";
         try {
             binaryFile = file.getBytes();
-            documentText = Recognition.recognize(binaryFile, language);
-            keywords = Recognition.findKeyWords(documentText);
+            try {
+                documentText = Recognition.recognize(binaryFile, language);
+                keywords = Recognition.findKeyWords(documentText);
+                System.out.println(keywords);
+            }catch (IOException | TesseractException ignored) {}
         }
-        catch (IOException | TesseractException e) {
+        catch (IOException  e) {
             binaryFile = null;
         }
         // Дата загрузки документа - текущая дата

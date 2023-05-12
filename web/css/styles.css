@@ -109,7 +109,6 @@ table tbody tr:nth-child(even){
 }
 
 #mainTable p{
-	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	max-width: 40ch;
