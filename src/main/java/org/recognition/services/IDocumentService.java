@@ -15,5 +15,5 @@ public interface IDocumentService {
     void uploadDocument(String documentName, String author, Date uploadDate, byte[] binaryFile, String documentText, String keywords);
     void deleteDocument(int id);
     Optional<DocumentEntity> getDocumentById(int id);
-    void updateDocument(int id, String documentName, String author, MultipartFile file) throws IOException;
+    void updateDocument(int id, String documentName, String author, MultipartFile file, String documentText, String keywords) throws IOException;
 }

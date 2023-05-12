@@ -83,7 +83,7 @@
 			<td><p th:utext="${document.updatedate}"></p></td>
 			<td><p th:utext="${document.author}"></p></td>
 			<td><p th:utext="${document.keywords}"></p></td>
-			<td><a href="#" onclick = "textActive(text)"><p th:text="${document.documenttext}"  style="white-space: nowrap;"></p></a></td>
+			<td><a href="#" onclick = "textActive(text)"><p th:text="${document.documenttext}" class="short_text"></p></a></td>
 			<td>
 				<form action="/download" th:action="@{/download}" method="POST">
 					<input type="text" name="id" th:value="${document.documentid}" style="display: none;">

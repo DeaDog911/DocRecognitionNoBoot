@@ -20,6 +20,7 @@ import org.recognition.services.IDocumentService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -101,11 +102,26 @@ public class IndexController {
     }
     @PostMapping("/update")
     public String update(@RequestParam("id") int id, @RequestParam("author") String author,
-                         @RequestParam("name") String name, @RequestParam("file") MultipartFile file) throws IOException {
+                         @RequestParam("name") String name, @RequestParam("file") MultipartFile file,
+                         @RequestParam("language") String language) throws IOException {
+        System.out.println(language);
         Optional<DocumentEntity> document = documentService.getDocumentById(id);
+        String documentText = null;
+        String keywords = null;
         if (document.isPresent()) {
-            name = Validation.makeNameValid(name);
-            documentService.updateDocument(id, name, author, file);
+            if(!name.equals("")) name = Validation.makeNameValid(name);
+            byte[] binaryFile = file.getBytes();
+            try {
+                if (binaryFile.length != 0) {
+                    if (language.equals("")) language = "rus";
+                    documentText = Recognition.recognize(file.getBytes(), language);
+                    keywords = Recognition.findKeyWords(documentText);
+                }else if (!language.equals("")) {
+                    documentText = Recognition.recognize(document.get().getBinarytext(), language);
+                    keywords = Recognition.findKeyWords(documentText);
+                }
+            } catch (IOException | TesseractException ignored) {}
+            documentService.updateDocument(id, name, author, file, documentText, keywords);
         }
         return "redirect:/";
     }

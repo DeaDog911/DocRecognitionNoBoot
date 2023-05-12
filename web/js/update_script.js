@@ -3,7 +3,6 @@ var file = document.getElementById('fileId');
 file.onchange = function(e) {
     var ext = this.value.match(/\.([^\.]+)$/)[1];
     if (ext=='pdf'){
-        alert('Документ успешно отправлен на сервер');
     }
     else{
         alert('Файл не может быть обработан из-за неверного формата');
@@ -15,7 +14,13 @@ var author;
 var filename;
 
 function editData(){
-    document.getElementById("update").submit();
+    let updateForm = document.getElementById("update");
+    if(document.getElementById('fid-1').checked) {
+        updateForm.elements.language.value = 'rus';
+    }else if(document.getElementById('fid-2').checked) {
+        updateForm.elements.language.value = 'eng';
+    }
+    updateForm.submit();
 }
 
 function sendAuthor(e){

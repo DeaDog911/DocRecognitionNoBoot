@@ -7,7 +7,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.recognition.config.Application;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -43,7 +43,7 @@ public class Recognition {
     }
 
     public static String findKeyWords(String input) {
-            // минус пунктуация и нижний реестр
+        // минус пунктуация и нижний реестр
         input = input.replaceAll("[^a-zA-Zа-яА-Я-\\s]", "").toLowerCase();
 
         // делим текст на слова

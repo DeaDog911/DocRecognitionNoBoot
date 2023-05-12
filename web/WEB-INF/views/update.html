@@ -36,7 +36,7 @@
                 <input class="edit_data" type="text" name="author" th:placeholder="${document.author}"
                        autocomplete="off" onchange="sendAuthor(this)">
             </td>
-            <td><span id="short_text"><p th:text="${document.documenttext}"></p></span></td>
+            <td><p class="short_text" th:text="${document.documenttext}"></p></td>
             <td><label class="input-file">
                 <input type="file" name="file" id="fileId" accept=".pdf" onchange="uploadDocument()" >
                 <span>Изменить</span>

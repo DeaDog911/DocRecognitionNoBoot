@@ -105,12 +105,6 @@ table tbody tr:nth-child(even){
 	transition: background 0.2s ease;
 }
 
-#mainTable p{
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 30ch;
-}
 
 #mainTable a{
 	white-space: nowrap;
@@ -471,6 +465,15 @@ table tbody tr:nth-child(even){
 	background:  #86c6fa;
 }
 
+.short_text {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 30ch;
+}
+
+
+
 /*страница 2*/
 
 .edit_data:hover{
@@ -481,12 +484,5 @@ table tbody tr:nth-child(even){
 #page2 .button.green{
 	margin-top: 20px;
 	margin-left:78%;
-}
-
-#short_text p{
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 30ch;
 }
 

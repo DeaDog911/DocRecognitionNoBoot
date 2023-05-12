@@ -50,16 +50,18 @@ public class DocumentService implements IDocumentService{
     }
 
     @Override
-    public void updateDocument(int id, String documentName, String author, MultipartFile file) {
+    public void updateDocument(int id, String documentName, String author, MultipartFile file, String documentText, String keywords) {
         Optional<DocumentEntity> document = documentRepository.findById((long) id);
         boolean updated = false;
         if (document.isPresent()) {
             DocumentEntity docEntity = document.get();
             if (!documentName.equals("")) { docEntity.setDocumentname(documentName); updated = true ;}
-            if (!author.equals("")) { docEntity.setAuthor(author); updated = true ;}
+            if (!author.equals("")) {docEntity.setAuthor(author); updated = true ;}
             try {
-                if (file != null) { docEntity.setBinarytext(file.getBytes()); updated = true ;}
+                if (file.getBytes().length != 0) { docEntity.setBinarytext(file.getBytes()); updated = true ;}
             } catch (IOException ignore) {}
+            if (documentText != null) { docEntity.setDocumenttext(documentText); updated = true;}
+            if (keywords != null) { docEntity.setKeywords(keywords); updated = true;}
             if (updated) docEntity.setUpdatedate(new Date(new java.util.Date().getTime()));
             documentRepository.save(docEntity);
         }
