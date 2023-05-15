@@ -1,0 +1,42 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>Комната 175</title>
+		<link rel="stylesheet" th:href="@{/css/login_styles.css}"  type="text/css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="forms">
+				  <div class="form login">
+					 <span class="title">Авторизация</span>
+
+					 <form action="/login" th:action="@{/login}" method="POST">
+						<div class="input-field">
+						  <input type="text" name="username" placeholder="Введите логин" required>
+						  <i class="uil uil-envelope icon"></i>
+						</div>
+						<div class="input-field">
+						  <input type="password" name="password" class="password" placeholder="Введите пароль" required>
+						  <i class="uil uil-lock icon"></i>
+						  <i class="uil uil-eye-slash showHidePw"></i>
+						</div>
+
+						<div class="input-field button">
+						  <input type="submit" value="Войти">
+						</div>
+					 </form>
+
+					 <div class="checkbox-text">
+						<a href="#" class="text">Забыли пароль?</a>
+							<span class="text">
+									<a href="#" th:href="@{/registration}" class="text signup-link">Зарегистрироваться</a>
+							</span>
+					 </div>
+				  </div>
+			</div>
+		</div>
+	</body>
+</html>
