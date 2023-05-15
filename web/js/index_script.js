@@ -53,12 +53,6 @@ function textActive(text){
     text_popup.classList.add('active');
 }
 
-// $('a').each(function() {
-//     if ($(this).text().length > 40) {
-//         $(this).text( $(this).text().substring(0, 40) + '…');
-//     }
-// });
-
 function textPassive(){
     const text_popup = document.getElementById('text_popup');
     text_popup.classList.remove('active');
@@ -88,7 +82,7 @@ function search_id(e){
     parent_e.children[1].href="?id="+id;
 }
 
-addPagerToTables('#mainTable', 5);
+addPagerToTables('#mainTable', 4);
 
 var search_btn = document.getElementsByClassName('search-btn')[0];
 var searchBox = document.getElementsByClassName('search-box')[0];

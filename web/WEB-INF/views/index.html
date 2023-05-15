@@ -36,7 +36,17 @@
 <!--		<a class="gif" href="#"><img src="house.gif" alt="" /></a>-->
 		<a href="#" class="gif" onclick="cancelMainPage()"></a>
 		<h2>TextScanify</h2>
-		<div class="form_toggle">
+		<form action="/upload" th:action="@{/upload}" method="POST" enctype="multipart/form-data" id="upload">
+			<label class="input-file">
+				<a class="gif_downoload" style="display: block; margin-bottom: 30px"></a>
+				<input type="file" name="file" accept=".pdf" onchange="uploadDocument(this)">
+				<input type="text" name="name" style="display: none">
+				<input type="text" name="author" style="display: none">
+				<input type="text" name="language" style="display: none">
+
+			</label>
+		</form>
+		<div class="form_toggle" style="margin-left: 40px;">
 			<div class="form_toggle-item item-1">
 				<input id="fid-1" type="radio" name="radio" value="off" checked>
 				<label for="fid-1">RU</label>
@@ -46,15 +56,7 @@
 				<label for="fid-2">EN</label>
 			</div>
 		</div>
-		<form action="/upload" th:action="@{/upload}" method="POST" enctype="multipart/form-data" id="upload">
-			<label class="input-file">
-				<input type="file" name="file" accept=".pdf" onchange="uploadDocument(this)">
-				<input type="text" name="name" style="display: none">
-				<input type="text" name="author" style="display: none">
-				<input type="text" name="language" style="display: none">
-				<span>Загрузить файл</span>
-			</label>
-		</form>
+
 		<div class="search-box" id="search-box">
 			<input type="number" min="1"  class="search-txt" onchange="search_id(this)" placeholder=" Введите индекс документа" autocomplete="off"/>
 			<a class="search-btn" href="#">
@@ -66,8 +68,8 @@
 <!--			логин пользователя-->
 		<button class="dropbtn"> Аккаунт</button>
 		<div class="dropdown-content">
-			<a href="#">Сбросить пароль</a>
-			<a href="#">Выйти</a>
+			<a href="#" onclick="window.location='C:/Users/katya/IdeaProjects/DocRecognitionNoBoot/web/WEB-INF/views/reset_password.html'">Сбросить пароль</a>
+			<a href="#" onclick="window.location='C:/Users/katya/IdeaProjects/DocRecognitionNoBoot/web/WEB-INF/views/login.html'">Выйти</a>
 		</div>
 	</div>
 	</div>
@@ -76,10 +78,10 @@
 		<thead>
 			<tr id="thead">
 				<td style="width:5%"><h3>Индекс документа</h3></td>
-				<td style="width:10%"><h3>Название документа</h3></td>
+				<td style="width:5%"><h3>Название документа</h3></td>
 				<td style="width:5%"><h3>Дата обновления</h3></td>
-				<td style="width:10%"><h3>Автор</h3></td>
-				<td style="width:25%"><h3>Ключевые слова</h3></td>
+				<td style="width:5%"><h3>Автор</h3></td>
+				<td style="width:35%"><h3>Ключевые слова</h3></td>
 				<td style="width:15%"><h3>Текст</h3></td>
 				<th style="width:30%;border-collapse: collapse" colspan="3"><h3>Действия</h3></th>
 			</tr>
