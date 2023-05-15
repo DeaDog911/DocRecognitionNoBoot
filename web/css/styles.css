@@ -48,12 +48,14 @@ a:visited {
 	align-items: center;
 }
 
+
 .heading h2 {
-	font-size: 30px;
+	font-size: 38px;
 	font-weight: 600;
 	padding: 20px 0;
 	margin-top: 0;
-	margin-right:10% ;
+	/*margin-left:50px ;
+	margin-right:50px ;*/
 	background-color: #ffffff;
 	border-bottom: 0px #dddddd;
 	margin-bottom: 0px;
@@ -183,6 +185,19 @@ table tbody tr:nth-child(even){
 	background: url(../images/house.gif) no-repeat;
 }
 
+.gif_downoload{
+	margin-left: 10px;
+	background: url(../images/static_folder.png) no-repeat;
+	width: 50px;
+	height: 50px;
+}
+
+.gif_downoload:hover{
+	background: url(../images/folder.gif) no-repeat;
+	width: 50px;
+	height: 50px;
+}
+
 
 /*модальные окна*/
 
@@ -297,27 +312,37 @@ table tbody tr:nth-child(even){
 .input-file{
 	position: relative;
 	display: inline-block;
+	top:20px;
 }
-.input-file span {
-	position: relative;
-	display: inline-block;
-	cursor: pointer;
-	outline: none;
-	text-decoration: none;
-	font-size: 14px;
-	vertical-align: middle;
-	color: rgb(255 255 255);
-	text-align: center;
-	border-radius: 4px;
-	background-color:  #2196F3;
-	line-height: 22px;
-	height: 40px;
-	padding: 10px 20px;
-	box-sizing: border-box;
-	border: none;
-	transition: background-color 0.2s;
-	font-size: 18px;
-}
+
+
+/*.input-file span{*/
+/*	position: relative;*/
+/*	display: inline-block;*/
+/*	!*cursor: pointer;*!*/
+/*	!*outline: none;*!*/
+/*	!*text-decoration: none;*!*/
+/*	!*vertical-align: middle;*!*/
+/*	!*!*color: rgb(255 255 255);*!*!*/
+/*	!*text-align: center;*!*/
+/*	!*border-radius: 4px;*!*/
+/*	!*line-height: 22px;*!*/
+/*	!*height: 40px;*!*/
+/*	!*padding: 10px 20px;*!*/
+/*	!*box-sizing: border-box;*!*/
+/*	!*border: none;*!*/
+/*	!*transition: background-color 0.2s;*!*/
+/*	!*margin-right: 10px;*!*/
+/*	background: url(../images/static_folder.png) no-repeat;*/
+/*	width: 50px;*/
+/*	height: 50px;*/
+/*}*/
+
+/*.input-file span:hover {*/
+/*	background: url(../images/folder.gif) no-repeat;*/
+/*	width: 50px;*/
+/*	height: 50px;*/
+/*}*/
 
 .input-file input[type=file] {
 	position: absolute;
@@ -329,26 +354,26 @@ table tbody tr:nth-child(even){
 }
 
 .input-file input[type=file]:focus + span {
-	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+	box-shadow: 0 0 0 0.2rem #ffffff;
 }
 
-.input-file:hover span {
-	background-color: #157acc;
+/*.input-file:hover span {*/
+/*	background-color: #157acc;*/
 
-}
-.input-file:active span {
-	background-color: #157acc;
-}
+/*}*/
+/*.input-file:active span {*/
+/*	background-color: #157acc;*/
+/*}*/
 
-.input-file input[type=file]:disabled + span {
+.input-file input[type=file]:disabled + span{
 	background-color: #eee;
 }
 
-.heading .input-file span{
-	margin-left: 20px;
-	width: 200px;
-	height:50px;
-}
+/*.heading .input-file span{*/
+/*	margin-left: 20px;*/
+/*	width: 200px;*/
+/*	height:50px;*/
+/*}*/
 
 /*пагинация */
 
@@ -373,17 +398,18 @@ table tbody tr:nth-child(even){
 /*поиск*/
 
 .search-box {
-	margin-left: 100px;
+	margin-left: 40%;
 	position: static;
-	width: 400px;
+	width: 300px;
 	background: #ffffff;
 	height: 40px;
 	padding: 10px;
+	margin-right: 20px;
 }
 
 
 .search-box:hover > .search-txt {
-	width: 340px;
+	width: 240px;
 	color:#000000;
 	padding-left:10px;
 }
@@ -429,8 +455,6 @@ table tbody tr:nth-child(even){
 .form_toggle {
 	display: inline-block;
 	overflow: hidden;
-	margin-left: 10px;
-	margin-right: 10px;
 }
 .form_toggle-item {
 	float: left;
@@ -441,7 +465,6 @@ table tbody tr:nth-child(even){
 }
 .form_toggle-item label {
 	display: inline-block;
-	/*padding: 0px 15px;*/
 	line-height: 30px;
 	border: 2px solid #999;
 	border-right: none;
@@ -486,3 +509,113 @@ table tbody tr:nth-child(even){
 	margin-left:78%;
 }
 
+.dropbtn {
+	background-color: #2196F3;
+	color: white;
+	min-width: 140px;
+	padding: 10px;
+	font-size: 18px;
+	border: none;
+	text-align: center;
+	border-radius: 4px;
+
+}
+
+.dropbtn:hover {
+	background-color: #2196F3;
+	color: white;
+	padding: 16px;
+	font-size: 18px;
+	min-width: 140px;
+	border: none;
+	border-radius: 0%;
+}
+
+.dropbtn:active {
+	background-color: #2196F3;
+	color: white;
+	min-width: 140px;
+	font-size: 18px;
+	border: none;
+	border-radius: 0%;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #2196F3;
+	min-width: 140px;
+	box-shadow: 0px 8px 18px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+
+}
+
+.dropdown-content a {
+	color: white;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color:  #2196F3;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	border-radius: 0px;
+}
+
+.input-file span {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	bottom: 20px;
+	outline: none;
+	text-decoration: none;
+	font-size: 14px;
+	vertical-align: middle;
+	color: rgb(255 255 255);
+	text-align: center;
+	border-radius: 4px;
+	background-color:  #2196F3;
+	line-height: 22px;
+	height: 40px;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+	transition: background-color 0.2s;
+	font-size: 18px;
+}
+.input-file input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+.input-file input[type=file]:focus + span {
+	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.input-file:hover span {
+	background-color: #157acc;
+
+
+}
+.input-file:active span {
+	background-color: #157acc;
+}
+.input-file input[type=file]:disabled + span {
+	background-color: #eee;
+}
