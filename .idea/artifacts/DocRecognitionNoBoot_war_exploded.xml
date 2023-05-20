@@ -65,6 +65,10 @@
           <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:10.1.8" />
           <element id="library" level="project" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-crypto:6.0.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:6.0.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:6.0.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:6.0.3" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="DocRecognitionNoBoot/web/Web" />
