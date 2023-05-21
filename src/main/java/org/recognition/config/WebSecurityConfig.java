@@ -41,6 +41,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests()
                     .requestMatchers("/registration*").permitAll()
                     .requestMatchers("/login").permitAll()
+                    .requestMatchers("/reset_password").permitAll()
+                    .requestMatchers("/new_password").permitAll()
                     .requestMatchers( "/*").hasAuthority("ROLE_USER")
                     .anyRequest().authenticated()
                 .and()
@@ -51,8 +53,9 @@ public class WebSecurityConfig {
                     .permitAll()
                 .and()
                     .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login")
                     .permitAll()
-//                .logoutSuccessUrl("/")
                 .and()
                 .httpBasic();
         return httpSecurity.build();
