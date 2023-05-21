@@ -68,8 +68,8 @@
 <!--			логин пользователя-->
 		<button class="dropbtn"> Аккаунт</button>
 		<div class="dropdown-content">
-			<a href="#" onclick="window.location='C:/Users/katya/IdeaProjects/DocRecognitionNoBoot/web/WEB-INF/views/reset_password.html'">Сбросить пароль</a>
-			<a href="#" onclick="window.location='C:/Users/katya/IdeaProjects/DocRecognitionNoBoot/web/WEB-INF/views/login.html'">Выйти</a>
+			<a href="#" th:href="@{/reset_password}">Сбросить пароль</a>
+			<a href="#" th:href="@{/logout}">Выйти</a>
 		</div>
 	</div>
 	</div>

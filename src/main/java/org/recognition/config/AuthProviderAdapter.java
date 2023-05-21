@@ -34,9 +34,6 @@ public class AuthProviderAdapter implements AuthenticationProvider {
             System.out.println("Invalid credentials");
             throw new BadCredentialsException("Invalid credentials.");
         }
-//
-
-
         return new UsernamePasswordAuthenticationToken(username, password, u.getAuthorities());
     }
 
