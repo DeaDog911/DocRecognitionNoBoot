@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,16 +24,19 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.recognition")
+@PropertySource("classpath:application.properties")
 public class AppConfig implements WebMvcConfigurer {
-
-    private final ApplicationContext applicationContext;
     @Autowired
-    public AppConfig(ApplicationContext applicationContext) {
-        this.applicationContext = applicationContext;
-    }
+    private ApplicationContext applicationContext;
+    @Autowired
+    private Environment env;
+
+    public static final String TMP_FOLDER = "/WEB-INF/tmp";
+    public static final int MAX_UPLOAD_SIZE = 128 * 1024 * 1024;
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
+        System.out.println(env.getProperty("property"));
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");
@@ -74,8 +79,8 @@ public class AppConfig implements WebMvcConfigurer {
         mailSender.setHost("smtp.mail.ru");
         mailSender.setPort(465);
 
-        mailSender.setUsername("springstudyproject175@mail.ru");
-        mailSender.setPassword("uf7y1gWisgaCsRNE9HYy");
+        mailSender.setUsername(env.getProperty("mail_sender_username"));
+        mailSender.setPassword(env.getProperty("mail_sender_password"));
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

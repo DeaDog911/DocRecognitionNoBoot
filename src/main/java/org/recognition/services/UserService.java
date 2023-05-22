@@ -86,9 +86,7 @@ public class UserService implements UserDetailsService {
             PasswordResetTokenEntity myToken = passwordResetTokenRepository.findByUser(user);
             System.out.println(myToken);
             if (myToken != null) {
-                System.out.println("delete");
                 passwordResetTokenRepository.delete(myToken);
-                System.out.println("delete success");
             }
             myToken = new PasswordResetTokenEntity(token, user);
             passwordResetTokenRepository.save(myToken);

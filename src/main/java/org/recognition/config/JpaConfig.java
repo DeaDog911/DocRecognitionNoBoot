@@ -1,7 +1,10 @@
 package org.recognition.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -19,7 +22,10 @@ import java.util.Properties;
 @Configuration
 @EnableJpaRepositories("org.recognition.repositories")
 @EnableTransactionManagement
+@PropertySource("classpath:application.properties")
 public class JpaConfig {
+    @Autowired
+    private Environment env;
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em
@@ -37,10 +43,10 @@ public class JpaConfig {
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-        dataSource.setUsername( "postgres" );
-        dataSource.setPassword( "deadog2003***17" );
+        dataSource.setDriverClassName(env.getProperty("data_source_driver_class"));
+        dataSource.setUrl(env.getProperty("data_source_url"));
+        dataSource.setUsername(env.getProperty("data_source_username"));
+        dataSource.setPassword( env.getProperty("data_source_password"));
         return dataSource;
     }
 

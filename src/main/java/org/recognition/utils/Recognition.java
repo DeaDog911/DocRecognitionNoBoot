@@ -6,7 +6,11 @@ import net.sourceforge.tess4j.TesseractException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
+import org.recognition.config.AppConfig;
 import org.recognition.config.Application;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 
 
 import javax.imageio.ImageIO;
@@ -15,14 +19,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+@Component
 public class Recognition {
+    @Autowired
+    static Environment env;
     public static String recognize(byte[] binaryFile, String language) throws IOException, TesseractException {
         PDDocument document = PDDocument.load(binaryFile);
         PDFRenderer pdfRenderer = new PDFRenderer(document);
         StringBuilder out = new StringBuilder();
 
         ITesseract _tesseract = new Tesseract();
-        _tesseract.setDatapath(Application.TESSDATA_PATH);
+        _tesseract.setDatapath(env.getProperty("project_dir") + "src\\main\\resources\\tessdata");
         _tesseract.setLanguage(language);
 
         for (int page = 0; page < document.getNumberOfPages(); page++) {
