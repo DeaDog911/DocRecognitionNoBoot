@@ -8,6 +8,7 @@ import org.recognition.services.UserService;
 import org.recognition.utils.Recognition;
 import org.recognition.utils.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -37,6 +38,8 @@ public class IndexController {
     DocumentService documentService;
     @Autowired
     UserService userService;
+    @Autowired
+    private Environment env;
 
     @GetMapping("/")
     public String index(Model model, Principal principal) {
@@ -116,7 +119,6 @@ public class IndexController {
     public String update(@RequestParam("id") int id,
                          @RequestParam("name") String name, @RequestParam("file") MultipartFile file,
                          @RequestParam("language") String language, Principal principal) throws IOException {
-        System.out.println(language);
         Optional<DocumentEntity> document = documentService.getDocumentById(id);
         String documentText = null;
         String keywords = null;

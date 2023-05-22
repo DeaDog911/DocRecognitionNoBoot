@@ -68,6 +68,6 @@ public class WebSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.debug(true)
                 .ignoring()
-                .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico");
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/lib/**", "/favicon.ico");
     }
 }

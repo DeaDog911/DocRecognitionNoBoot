@@ -6,11 +6,6 @@ import net.sourceforge.tess4j.TesseractException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
-import org.recognition.config.AppConfig;
-import org.recognition.config.Application;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
 
 
 import javax.imageio.ImageIO;
@@ -19,17 +14,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-@Component
 public class Recognition {
-    @Autowired
-    static Environment env;
+    public static String TESSDATA_PATH;
     public static String recognize(byte[] binaryFile, String language) throws IOException, TesseractException {
         PDDocument document = PDDocument.load(binaryFile);
         PDFRenderer pdfRenderer = new PDFRenderer(document);
         StringBuilder out = new StringBuilder();
 
         ITesseract _tesseract = new Tesseract();
-        _tesseract.setDatapath(env.getProperty("project_dir") + "src\\main\\resources\\tessdata");
+        _tesseract.setDatapath(TESSDATA_PATH);
         _tesseract.setLanguage(language);
 
         for (int page = 0; page < document.getNumberOfPages(); page++) {
@@ -52,11 +45,8 @@ public class Recognition {
     public static String findKeyWords(String input) {
         // минус пунктуация и нижний реестр
         input = input.replaceAll("[^a-zA-Zа-яА-Я-\\s]", "").toLowerCase();
-
         // делим текст на слова
         String[] words = input.split("\\s+");
-
-
         // считаем кол-во встреч каждого слова
         Map<String, Integer> wordCounts = new HashMap<>();
         for (String word : words) {

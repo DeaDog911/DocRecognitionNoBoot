@@ -1,5 +1,6 @@
 package org.recognition.config;
 
+import org.recognition.utils.Recognition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -33,10 +34,8 @@ public class AppConfig implements WebMvcConfigurer {
 
     public static final String TMP_FOLDER = "/WEB-INF/tmp";
     public static final int MAX_UPLOAD_SIZE = 128 * 1024 * 1024;
-
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
-        System.out.println(env.getProperty("property"));
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");
@@ -90,6 +89,11 @@ public class AppConfig implements WebMvcConfigurer {
         props.put("mail.debug", "true");
 
         return mailSender;
+    }
+
+    @Bean
+    public void setTessdataPath() {
+        Recognition.TESSDATA_PATH = env.getProperty("project_dir") + "src\\main\\resources\\tessdata";
     }
 }
 

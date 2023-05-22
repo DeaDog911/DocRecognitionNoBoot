@@ -9,20 +9,16 @@ import org.recognition.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.security.Principal;
-import java.util.Locale;
 import java.util.UUID;
 
 @Controller
@@ -46,7 +42,6 @@ public class AuthController implements WebMvcConfigurer {
     @PostMapping("/registration")
     public String addUser(@ModelAttribute("userForm") UserEntity userForm, Model model) {
         if (!userForm.getPassword().equals(userForm.getPasswordConfirm())){
-            System.out.println(userForm.getPassword() + " " + userForm.getPasswordConfirm());
             model.addAttribute("passwordError", "Пароли не совпадают");
             return "registration";
         }
@@ -69,7 +64,6 @@ public class AuthController implements WebMvcConfigurer {
     }
 
     @PostMapping("/reset_password")
-    @ResponseBody
     public String reset_password(HttpServletRequest request,
                                  @RequestParam("username") String username,
                                  @RequestParam("email") String email) throws MessagingException {
@@ -80,8 +74,7 @@ public class AuthController implements WebMvcConfigurer {
         String token = UUID.randomUUID().toString();
         userService.createPasswordResetTokenForUser(user, token);
         mailSender.send(constructResetTokenEmail(request.getRequestURL().toString(), token, user));
-        return "<html lang=ru>\n" + "<header><title>Reset Password</title></header>\n" +
-                "<body>\n" + "Check your mail\n" + "</body>\n" + "</html>";
+        return "check_email";
     }
 
     @GetMapping(value = "/reset_password", params = {"token"})
@@ -107,8 +100,6 @@ public class AuthController implements WebMvcConfigurer {
     @PostMapping(value = "/new_password")
     public String save_new_password(@RequestParam("password") String password, @RequestParam("token") String token,
                                     Authentication authentication) {
-        System.out.println(password);
-        System.out.println(token);
         UserEntity user;
         if (authentication == null) {
             user = userService.getUserByPasswordResetToken(token);
