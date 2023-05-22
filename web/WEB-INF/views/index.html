@@ -3,7 +3,8 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<title>175 Комната</title>
+	<title>TextScanify</title>
+	<link rel="shortcut icon" href="images/doc48.png" type="image/png">
 	<link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
 	<!--[if lt IE 9]>
@@ -32,21 +33,18 @@
 		<a class="close" onclick="textPassive();" ><img th:src="@{/images/closewindow.png}"/></a>
 	</div>
 	<div class="heading">
-<!--		<a><img th:src="@{/images/static_house.png}"></a>-->
-<!--		<a class="gif" href="#"><img src="house.gif" alt="" /></a>-->
 		<a href="#" class="gif" onclick="cancelMainPage()"></a>
 		<h2>TextScanify</h2>
 		<form action="/upload" th:action="@{/upload}" method="POST" enctype="multipart/form-data" id="upload">
-			<label class="input-file">
+			<label class="input-file"  title = "Загрузить pdf-файл">
 				<a class="gif_downoload" style="display: block; margin-bottom: 30px"></a>
 				<input type="file" name="file" accept=".pdf" onchange="uploadDocument(this)">
 				<input type="text" name="name" style="display: none">
-<!--				<input type="text" name="author" style="display: none">-->
 				<input type="text" name="language" style="display: none">
 
 			</label>
 		</form>
-		<div class="form_toggle" style="margin-left: 40px;">
+		<div class="form_toggle" title = "Язык распознавания" style="margin-left: 40px;">
 			<div class="form_toggle-item item-1">
 				<input id="fid-1" type="radio" name="radio" value="off" checked>
 				<label for="fid-1">RU</label>

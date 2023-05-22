@@ -186,6 +186,7 @@ table tbody tr:nth-child(even){
 }
 
 .gif_downoload{
+	cursor: pointer;
 	margin-left: 10px;
 	background: url(../images/static_folder.png) no-repeat;
 	width: 50px;
@@ -315,66 +316,6 @@ table tbody tr:nth-child(even){
 	display: inline-block;
 	top:20px;
 }
-
-
-/*.input-file span{*/
-/*	position: relative;*/
-/*	display: inline-block;*/
-/*	!*cursor: pointer;*!*/
-/*	!*outline: none;*!*/
-/*	!*text-decoration: none;*!*/
-/*	!*vertical-align: middle;*!*/
-/*	!*!*color: rgb(255 255 255);*!*!*/
-/*	!*text-align: center;*!*/
-/*	!*border-radius: 4px;*!*/
-/*	!*line-height: 22px;*!*/
-/*	!*height: 40px;*!*/
-/*	!*padding: 10px 20px;*!*/
-/*	!*box-sizing: border-box;*!*/
-/*	!*border: none;*!*/
-/*	!*transition: background-color 0.2s;*!*/
-/*	!*margin-right: 10px;*!*/
-/*	background: url(../images/static_folder.png) no-repeat;*/
-/*	width: 50px;*/
-/*	height: 50px;*/
-/*}*/
-
-/*.input-file span:hover {*/
-/*	background: url(../images/folder.gif) no-repeat;*/
-/*	width: 50px;*/
-/*	height: 50px;*/
-/*}*/
-
-.input-file input[type=file] {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
-	display: block;
-	width: 0;
-	height: 0;
-}
-
-.input-file input[type=file]:focus + span {
-	box-shadow: 0 0 0 0.2rem #ffffff;
-}
-
-/*.input-file:hover span {*/
-/*	background-color: #157acc;*/
-
-/*}*/
-/*.input-file:active span {*/
-/*	background-color: #157acc;*/
-/*}*/
-
-.input-file input[type=file]:disabled + span{
-	background-color: #eee;
-}
-
-/*.heading .input-file span{*/
-/*	margin-left: 20px;*/
-/*	width: 200px;*/
-/*	height:50px;*/
-/*}*/
 
 /*пагинация */
 
