@@ -177,3 +177,12 @@ body{
     margin-top: 30px;
     text-align: center;
 }
+
+.heading {
+    margin:auto;
+    padding-left: 20px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
