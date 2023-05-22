@@ -63,7 +63,11 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
-        user.setRoles(Collections.singleton(new RoleEntity(1L, "ROLE_USER")));
+        RoleEntity role = new RoleEntity(1L, "ROLE_USER");
+        if (!roleRepository.findById(1L).isPresent()) {
+            roleRepository.save(role);
+        }
+        user.setRoles(Collections.singleton(role));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
