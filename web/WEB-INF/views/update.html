@@ -33,8 +33,7 @@
             </td>
             <td><p th:text="${document.uploaddate}"></p></td>
             <td>
-                <input class="edit_data" type="text" name="author" th:placeholder="${document.author}"
-                       autocomplete="off" onchange="sendAuthor(this)">
+                <p th:text="${document.author}"></p>
             </td>
             <td><p class="short_text" th:text="${document.documenttext}"></p></td>
             <td><label class="input-file">

@@ -38,7 +38,6 @@ public class AuthController implements WebMvcConfigurer {
     }
     @GetMapping("/registration")
     public String registration(Model model) {
-        //model.addAttribute("userForm", new UserEntity());
         return "registration";
     }
     @PostMapping("/registration")

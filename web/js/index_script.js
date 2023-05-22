@@ -21,11 +21,9 @@ function uploadDocument(el) {
     let ext = el.value.match(/\.([^\.]+)$/)[1];
     if (ext=='pdf'){
         const name= prompt("Введите имя файла");
-        const author = prompt("Введите имя автора");
         let uploadForm = document.getElementById('upload');
-        if (name !== "" && name !== null && author !== "" && author != null) {
+        if (name !== "" && name !== null) {
             uploadForm.elements.name.value = name;
-            uploadForm.elements.author.value = author;
             if(document.getElementById('fid-1').checked) {
                 uploadForm.elements.language.value = 'rus';
             }else if(document.getElementById('fid-2').checked) {
@@ -33,7 +31,7 @@ function uploadDocument(el) {
             }
             uploadForm.submit();
         }else {
-            alert("Имя файла или имя автора не может быть пуcтой строкой");
+            alert("Имя файла не может быть пуcтой строкой");
             window.location.reload();
         }
     }

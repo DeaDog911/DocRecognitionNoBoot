@@ -35,6 +35,9 @@ public class DocumentEntity {
     @Column(name = "uploaddate")
     private Date uploaddate;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private UserEntity user;
+
     public int getDocumentid() {
         return documentid;
     }
@@ -97,6 +100,14 @@ public class DocumentEntity {
 
     public void setUploaddate(Date uploaddate) {
         this.uploaddate = uploaddate;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     @Override
