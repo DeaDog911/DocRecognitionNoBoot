@@ -10,7 +10,7 @@ file.onchange = function(e) {
     }
 }
 
-var author;
+// var author;
 var filename;
 
 function editData(){
@@ -23,9 +23,9 @@ function editData(){
     updateForm.submit();
 }
 
-function sendAuthor(e){
-    author = e.value;
-}
+// function sendAuthor(e){
+//     author = e.value;
+// }
 
 function cancelUpdate() {
     window.location = window.location.href.split("/").slice(0,-1).join("/") + "/";
