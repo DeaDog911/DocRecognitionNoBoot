@@ -8,15 +8,6 @@ function popupPassive(){
     const popup = document.getElementById('popup');
     popup.classList.remove('active');
 }
-
-function checkboxActive(el){
-    const popup = document.getElementById('check_box');
-    popup.classList.add('active');
-}
-function checkboxPassive(){
-    const popup = document.getElementById('check_box');
-    popup.classList.remove('active');
-}
 function uploadDocument(el) {
     let ext = el.value.match(/\.([^\.]+)$/)[1];
     if (ext=='pdf'){
@@ -55,20 +46,6 @@ function textPassive(){
     const text_popup = document.getElementById('text_popup');
     text_popup.classList.remove('active');
 }
-function activePage(e) {
-    var elems = document.querySelectorAll(".active");
-    [].forEach.call(elems, function(el) {
-        el.classList.remove("active");
-        el.classList.add("inactive");
-    });
-    e.classList.remove('inactive');
-    e.classList.add('active');
-}
-function show(shown, hidden) {
-    document.getElementById(shown).style.display='block';
-    document.getElementById(hidden).style.display='none';
-    return false;
-}
 
 function cancelMainPage() {
     window.location = window.location.href.split("/").slice(0,-1).join("/") + "/";
@@ -80,8 +57,6 @@ function search_id(e){
     parent_e.children[1].href="?id="+id;
 }
 
-addPagerToTables('#mainTable', 4);
-
 var search_btn = document.getElementsByClassName('search-btn')[0];
 var searchBox = document.getElementsByClassName('search-box')[0];
 searchBox.addEventListener("keyup", function (event) {
@@ -89,6 +64,8 @@ searchBox.addEventListener("keyup", function (event) {
         search_btn.click();
     }
 });
+
+addPagerToTables('#mainTable', 4);
 
 function addPagerToTables(tables, rowsPerPage = 10) {
     tables =
